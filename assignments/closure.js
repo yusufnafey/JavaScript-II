@@ -4,9 +4,32 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
+function closure() {
+  const layer1 = "Hello from layer 1!";
+  console.log(layer1);
+  // console.log(layer2) DOESN'T WORK!
+  // console.log(layer3) DOESN'T WORK!
+
+  closure2();
+  function closure2() {
+    const layer2 = "Hello from layer 2!";
+    console.log(layer1);
+    console.log(layer2);
+    // console.log(layer3); DOESN'T WORK!
+
+    closure3();
+    function closure3() {
+      const layer3 = "Hello from layer 3!";
+      console.log(layer1);
+      console.log(layer2);
+      console.log(layer3);
+      // ALL WORK!
+    }
+  }
+}
+closure();
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
-
 
 // ==== Challenge 2: Implement a "counter maker" function ====
 const counterMaker = () => {
